@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Code Convertor</title>
+    <!-- Include Monaco Editor CSS and JS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" data-name="vs/editor/editor.main" href="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.27.0/min/vs/editor/editor.main.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.27.0/min/vs/loader.min.js"></script>
+   
+</head>
+<body>
+    <h1>Code Convertor</h1>
+   
+    <div class="navbar">
+      <div class="dropdown">
+        <button id="dropdown-button" class="dropdownbutton">Choose Option<span class="dropdown-arrow">&#9660;</span></button>
+        <div class="dropdown-content">
+          <a href="#" onclick="selectOption('Java')">Java</a>
+          <a href="#" onclick="selectOption('C++')">C++</a>
+          <a href="#" onclick="selectOption('Python')">Python</a>
+        </div>
+      </div>
+      <div>
+        <button id="convertbutton" class="button">Convert</button>
+        <button id="debugbutton" class="button">Debug</button>
+        <button id="qualitybutton" class="button">Quality Check</button>
+      </div>
+    </div>
+   
+       
+     
+   <div class="mainContainer">
+    <div id="editorContainer" ></div>
+   
+    <div id="resultContainer"></div>
+    </div>
+</body>
+</html>
+<script src="script.js"></script>

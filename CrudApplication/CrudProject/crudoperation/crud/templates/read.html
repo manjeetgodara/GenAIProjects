@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+   {% load static %}
+
+   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   <title>Read Data</title>
+</head>
+<style>
+  
+   h1 {
+      color:red;
+      text-align: center;
+      font-family: Trebuchet MS, sans-serif;
+   }
+  
+   a{
+      text-align: center;
+      text-decoration: none;
+      border:1px solid red;
+      padding: 5px;
+      border-radius: 5px;
+      display:inline-block;
+      margin-left: 5%;
+      font-family: Trebuchet MS, sans-serif;
+      
+   }
+   .nav{
+      background-color:rgb(243, 232, 232);
+      padding:5px;
+   }
+  
+   .data table{
+      border:2px solid blue;
+      margin:auto;
+      border-radius:5px
+   }
+   
+
+   table{
+      padding: 25px;
+   }
+
+    tr {
+        margin-bottom: 20px; /* Adjust the value as needed */
+        font-size: 20px;
+    }
+
+    td {
+        padding-right: 20px; /* Adjust the value as needed */
+        font-size: 20px;
+    }
+
+    table, th, td {
+  border: 1px solid black;
+  padding:10px;
+  font-family: Trebuchet MS, sans-serif;
+}
+a span i{
+      margin-left:5px;
+   }
+   a:hover{
+      background-color: rgb(248, 150, 150);
+   }
+   </style>
+<body>
+   <div class="nav">
+      <a style="color:black; font-size: 25px; border:none">Crud App</a>
+      <a style="margin-left:28%" href="{% url 'create' %}">Create Entry<span><i class="fa-solid fa-plus"></i></span></a>
+      <a href="{% url 'update' %}">Update Entry<span><i class="fa-solid fa-arrows-spin"></i></span></a>
+      <a href="{% url 'delete' %}">Delete Entry<span><i class="fa-sharp fa-regular fa-circle-xmark"></i></span></a>
+      <a href="{% url 'read' %}">Read Entry<span><i class="fa-solid fa-book-open-reader"></i></span></a>
+      </div>
+   <h1>Read Data</h1>
+  <div class="data">
+   <table>
+      <tr>
+          <th>Student</th>
+          <th>Roll No.</th>
+      </tr>
+      {% for key, value in data.items %}
+      <tr>
+          <td style="padding-right: 10px;"><strong>{{ key }}</strong></td>
+          <td><strong>{{ value }}</strong></td>
+      </tr>
+      {% endfor %}
+  </table>
+   </div>
+</body>
+</html>

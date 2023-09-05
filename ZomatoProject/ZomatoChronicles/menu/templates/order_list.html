@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block title %}Order List{% endblock title %}
+
+{% block body %}
+<style>
+    /* Table Styling */
+    .order-table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+        border: 1px solid #ccc;
+    }
+
+    .order-table th,
+    .order-table td {
+        border: 1px solid #ccc;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .order-table th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+    }
+
+    /* Ordered Dishes List Styling */
+    .ordered-dishes {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: left;
+    }
+
+    .ordered-dishes li {
+        margin-bottom: 5px;
+    }
+
+    /* Dropdown Styling */
+    select {
+        padding: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    /* Back Link Styling */
+    .back-link {
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+    .update-button {
+        background-color: #2ecc71;
+        color: white;
+    }
+
+    .delete-button {
+        background-color: #e74c3c;
+        color: white;
+    }
+    h2{
+        text-align: center;
+        color:white;
+    }
+</style>
+
+<h2>Order List</h2>
+<table class="order-table">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Ordered Dishes</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+            <tr>
+                <td style="color:white">{{ order.customer_name }}</td>
+                <td>
+                    <ul class="ordered-dishes">
+                        {% for order_item in order.orderitem_set.all %}
+                            <li style="color:white">{{ order_item.dish.name }} x{{ order_item.quantity }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+                <td style="color:white">{{order.status}}</td>
+                <td>
+                    <form method="post" action="{% url 'update_order_status' order.order_id %}">
+                        {% csrf_token %}
+                        <select name="status">
+                            <option value="received" {% if order.status == 'received' %}selected{% endif %}>Received</option>
+                            <option value="preparing" {% if order.status == 'preparing' %}selected{% endif %}>Preparing</option>
+                            <option value="on_the_way" {% if order.status == 'on_the_way' %}selected{% endif %}>On the Way</option>
+                            <option value="reached" {% if order.status == 'reached' %}selected{% endif %}>Reached</option>
+                            <option value="cancelled" {% if order.status == 'cancelled' %}selected{% endif %}>Cancelled</option>
+                        </select>
+                        <button type="submit" class="update-button">Update Status</button>
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="{% url 'delete_order' order.order_id %}">
+                        {% csrf_token %}
+                        <button class="delete-button" type="submit">Delete Order</button>
+                    </form>
+                </td>
+                
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock body %}

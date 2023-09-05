@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Place Order {% endblock title%}
+
+{% block body %}
+<h2>Place an Order</h2>
+<style>
+    /* Add styling for the order form */
+    .order-form {
+        width: 50%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        opacity:0.85
+    }
+    h2{
+        text-align: center;
+        font-size: 30px;
+        color:rgb(246, 243, 243);
+    }
+
+    /* Style the form fields */
+    .order-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .order-form input[type="text"],
+    .order-form input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+    }
+
+    /* Style the submit button */
+    .order-form button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+    }
+
+    .order-form button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Style the back link */
+    .back-link {
+        display: block;
+        margin-top: 10px;
+        text-decoration: none;
+        color: #007bff;
+    }
+
+    .back-link:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="order-form">
+    <form method="post" class="order-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Place Order</button>
+    </form>
+    <a href="{% url 'dish_list' %}" class="back-link">Back to Dish List</a>
+</div>
+
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"1f87dfe76ce8272437a0bbc6e01c20bdb","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+{% endblock body %}

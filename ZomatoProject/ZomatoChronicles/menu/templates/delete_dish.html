@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Dish Page{% endblock title %}
+
+
+
+{% block body %}
+<div class="delete-dish" style="width: 50%; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; opacity:0.85">
+    <h2 style="margin-bottom: 10px;">Delete Dish: {{ dish.name }}</h2>
+    <p>Are you sure you want to delete this dish?</p>
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" style="padding: 10px 20px; background-color: #dc3545; color: #fff; border: none; border-radius: 3px; cursor: pointer;">
+            Delete Dish
+        </button>
+    </form>
+    <a href="{% url 'dish_list' %}" style="display: block; margin-top: 10px; text-decoration: none; color: #007bff;">
+        Cancel
+    </a>
+</div>
+{% endblock body %}
+

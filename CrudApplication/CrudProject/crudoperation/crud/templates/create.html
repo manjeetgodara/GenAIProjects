@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+   {% load static %}
+
+   <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+   <title>Create Entry</title>
+</head>
+<style>
+    body{
+      background-image: url("https://marketsplash.com/content/images/2023/06/MarketSplash-PROGRAMMING-Cover-15-7.jpg");
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+   }
+  .nav{
+      background-color:rgb(243, 232, 232);
+      padding:5px;
+   }
+   h1 {
+      color:red;
+      text-align: center;
+      font-family: Trebuchet MS, sans-serif;
+   }
+  
+   a{
+      text-align: center;
+      text-decoration: none;
+      border:1px solid red;
+      padding: 5px;
+      border-radius: 5px;
+      display:inline-block;
+      margin-left: 5%;
+      font-family: Trebuchet MS, sans-serif;
+   }
+   form{
+     padding: 20px;
+      border:2px solid red;
+      display: inline-block;
+      border-radius: 5px;
+
+   }
+   form label{
+      font-size: 20px;
+      color:red;
+      font-family: Trebuchet MS, sans-serif;
+   }
+   button{
+      padding:10px 20px;
+      font-size: 18px;
+      font-weight: 700;
+      margin-top: 10px;
+      border-radius: 10px;
+   }
+   .form{
+     margin-top: 40px;
+      text-align:center;
+   }
+   input{
+      padding:5px;
+      border:1px solid rgb(1, 1, 1);
+      border-radius: 10px;
+      margin-top: 10px;
+   }
+   a span i{
+      margin-left:5px;
+   }
+   a:hover{
+      background-color: rgb(248, 150, 150);
+   }
+</style>
+<body>
+   <div class="nav">
+      <a style="color:black; font-size: 25px; border:none">Crud App</a>
+      <a style="margin-left:28%" href="{% url 'create' %}">Create Entry<span><i class="fa-solid fa-plus"></i></span></a>
+      <a href="{% url 'update' %}">Update Entry<span><i class="fa-solid fa-arrows-spin"></i></span></a>
+      <a href="{% url 'delete' %}">Delete Entry<span><i class="fa-sharp fa-regular fa-circle-xmark"></i></span></a>
+      <a href="{% url 'read' %}">Read Entry<span><i class="fa-solid fa-book-open-reader"></i></span></a>
+      </div>
+   <h1>Create Entry</h1>
+   <div class="form">
+   <form method="post">
+       {% csrf_token %}
+       <label for="key">Student  :</label>
+       <input type="text" id="key" name="key">
+       <br>
+       <label for="value">Roll No. :</label>
+       <input type="text" id="value" name="value">
+       <br>
+       <button type="submit">Create</button>
+   </form>
+   </div>
+</body>
+</html>

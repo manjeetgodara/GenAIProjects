@@ -1,0 +1,95 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color:white /* Set the background color */
+}
+body h1{
+    text-align: center;
+    color:Red;
+}
+#editorContainer {
+    width:50%;
+    height:400px;
+    border:2px solid rgb(13, 13, 13);
+    margin-top:40px;
+    margin-left: 20px;
+    
+}
+
+
+ .mainContainer{
+    display:flex;
+
+ }
+  #resultContainer{
+    border:2px solid rgb(13, 13, 13);
+ width:50%;
+ height:400px;
+ margin-top:40px;
+ margin-right: 20px;
+ margin-left: 5px;
+ color:red;
+ font-family: Courier, monospace;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar {
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+  }
+
+  .dropdown-arrow {
+    font-size: 12px;
+    margin-left: 5px;
+  }
+
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: grey;
+    min-width: 160px;
+    z-index: 1;
+  }
+
+  .dropdown-content a {
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .button {
+    background-color: grey;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  .button:hover{
+    background-color: red;
+  }

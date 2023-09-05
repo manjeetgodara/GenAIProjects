@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Dish{% endblock title%}
+
+{% block body %}
+<div class="update-dish" style="width: 50%; margin: 20px auto; padding: 20px; border: 1px solid #ccc; border-radius: 5px; background-color: #f9f9f9; opacity:0.85">
+    <h2 style="margin-bottom: 10px;">Update Dish: {{ dish.name }}</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="padding: 10px 20px; background-color: #007bff; color: #fff; border: none; border-radius: 3px; cursor: pointer;">
+            Update Dish
+        </button>
+    </form>
+    <a href="{% url 'dish_list' %}" style="display: block; margin-top: 10px; text-decoration: none; color: #007bff;">
+        Back to Dish List
+    </a>
+</div>
+
+<script type="text/javascript">
+    (function(d, m){
+        var kommunicateSettings = 
+            {"appId":"1f87dfe76ce8272437a0bbc6e01c20bdb","popupWidget":true,"automaticChatOpenOnNavigation":true};
+        var s = document.createElement("script"); s.type = "text/javascript"; s.async = true;
+        s.src = "https://widget.kommunicate.io/v2/kommunicate.app";
+        var h = document.getElementsByTagName("head")[0]; h.appendChild(s);
+        window.kommunicate = m; m._globals = kommunicateSettings;
+    })(document, window.kommunicate || {});
+/* NOTE : Use web server to view HTML files as real-time update will not work if you directly open the HTML file in the browser. */
+</script>
+{% endblock body %}
